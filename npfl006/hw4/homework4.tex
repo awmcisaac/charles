@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{NPFL006 Introduction to Formal Linguistics - Homework 4}
+\date{\today}
+\author{Andrew McIsaac}
+
+\begin{document}
+\maketitle
+
+	\begin{enumerate}
+		\item What type of graphs are used to represent the meaning of sentences?
+
+			UCCA uses directed acyclic graphs.
+
+			AMR uses rooted, directed graphs.
+
+		\item What do nodes and edges of the graph represent / what do they
+			correspond to?
+
+			In UCCA, nodes are units which are either terminal or are several
+			elements which represent a single entity with a semantic or
+			cognitive consideration. The internal structure of a unit is
+			represented by its outbound edges.
+			Edges correspond to categories and represent the descendant unit's
+			role in forming the semantics of the parent unit.
+
+			AMR nodes represent entities, events, properties and states. Edges
+			are relations that link entities.
+
+		\item What labels are used on nodes?
+
+			No labels are used on nodes for UCCA, except for at the leaves of
+			the DAG, where the terminals are words or multi-word chunks. Nodes
+			can be identified by the labels on their outgoing edges.
+
+			In AMR, there are also only labels on leaf nodes, which are labelled
+			with concepts (e.g. ``(b/boy)'' refers to an instance of the concept
+			boy).
+
+		\item What labels are used on edges?
+
+			For UCCA, edges are labelled with category abbreviations. For
+			example, an edge might be labelled with ``A'' to indicate a
+			participant in a scene, or ``H'' to describe a scene linked to another
+			scene (a scene describes some movement or action, or a temporally
+			persistent state).
+
+			AMR edges are labelled with their specific relations. These can be
+			frame arguments, general semantic relations, relations for
+			quantities, relations for date-entities, or relations for lists.
+
+	\end{enumerate}
+\end{document}

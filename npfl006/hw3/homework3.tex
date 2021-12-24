@@ -1,0 +1,97 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{NPFL006 Introduction to Formal Linguistics - Homework 3}
+\date{\today}
+\author{Andrew McIsaac}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+	\item 
+		\begin{enumerate}[label=\arabic*.]
+			\item If the lexical function $S_0$ specifies for the verb
+				\textit{to produce} the noun \textit{production}, for the verbs
+				\textit{to sell, to print, to teach} it specifies the
+				following nouns (respectively):
+
+				(c) \textit{sale, print, teaching}
+
+			\item If the lexical function $Oper_2$ specifies for the noun 
+				\textit{kiss} the verb \textit{to receive}, for the nouns
+				\textit{complaint, exam, operation} it specifies the following
+				verbs (respectively):
+				
+				(b) \textit{to face, to take, to undergo}
+		\end{enumerate}
+
+	\item Observe the lexical functions proposed below. Based on the working
+		definition and examples, write four more examples for each of the
+		functions:
+		\begin{enumerate}[label=\arabic*.]
+			\item $Sound(cow) = to~moo$ \\
+				$Sound(bell) = to~ding$ \\
+				$Sound(fire) = to~roar$ \\
+				$Sound(trumpet) = to~toot$
+			\item $Loc(teacher) = school$ \\
+				$Loc(nurse) = hospital$ \\
+				$Loc(rower) = river$ \\
+				$Loc(camel) = desert$
+			\item $Disc(dinosaurs) = palaeontology$ \\
+				$Disc(sounds) = phonetics$ \\
+				$Disc(flags) = vexillology$ \\
+				$Disc(stamps) = philately$
+		\end{enumerate}
+
+	\item Observe lexical units, morphological features, and syntactic relations
+		in the sentence below. Following up the concept of lexical functions in
+		MTT, make your own proposal of four lexical functions. Explain the
+		proposed functions, and for each of them, give one example from the
+		sentence and two own examples.
+		\begin{enumerate}[label=\arabic*.]
+			\item \textit{Purpose}: a typical role or purpose of an entity,
+				object, etc. \\
+				\textit{Purpose(universities): to teach} \\
+				\textit{Purpose(government): to govern} \\
+				\textit{Purpose(microphone) = to record sound}
+
+			\item \textit{Fig}: figurative metaphor to evoke war-like imagery \\
+				\textit{Fig(poverty) = to fight \_}\\
+				\textit{Fig(climate change) = to tackle \_} \\
+				\textit{Fig(cancer) = to beat \_} \\
+
+			\item \textit{Fresh}: indicating an approach that has not been taken
+				before\\
+				\textit{Fresh(tools) = innovative} \\
+				\textit{Fresh(ideas) = new} \\
+				\textit{Fresh(methods) = original} \\
+
+			\item \textit{Spec}: indicating a specifier or specific type \\
+				\textit{Spec(training) = vocational} \\
+				\textit{Spec(surgeon) = heart} \\
+				\textit{Spec(book) = fiction}
+
+		\end{enumerate}
+
+\end{enumerate}
+\end{document}
