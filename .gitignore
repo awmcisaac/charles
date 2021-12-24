@@ -1,5 +1,6 @@
 **/*.res
 **/*.bin
+**/*.pkl
 **/*.xml
 **/*.lst
 **/__pycache__
