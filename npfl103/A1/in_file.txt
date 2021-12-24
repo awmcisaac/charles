@@ -1,0 +1,1 @@
+Produktem je stematizační algoritmus pro český jazyk založený na gramatických pravidlech jako doplněk k metodám používajícím slovník pro vyhledávání a dolování českého textu. Snowball implementace stematizačního algoritmu českého jazyka je vytvořena na základě kompletní sady všech předpon, přípon a koncovek, které se mohou v českém jazyce vyskytovat.

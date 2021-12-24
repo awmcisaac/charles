@@ -1,0 +1,30 @@
+**/*.res
+**/*.bin
+**/*.xml
+**/*.lst
+**/__pycache__
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+**/*.zip
+**/*.tar.gz
+
+# latex files
+**/*.aux
+**/*.bbl
+**/*.bcf
+**/*.bib
+**/*.blg
+**/*.fdb_latexmk
+**/*.fls
+**/*.log
+**/*.out
+**/*.run.xml
+**/*.synctex.gz
+**/*.toc
+**/*.nav
+**/*.snm
+
+# npfl103
+npfl103/A1/doc*
+npfl103/A1/eval
+npfl103/A1/*.txt

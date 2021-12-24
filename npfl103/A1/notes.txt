@@ -1,0 +1,5 @@
+use RSV_d to improve IDF term from Okapi BM25
+
+scores: cs		en
+run-0	0.05	0.05
+run-1	>0.20	>0.20
