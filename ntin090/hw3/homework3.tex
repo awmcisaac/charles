@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usetikzlibrary{chains,fit,shapes}
+
+\author{Andrew McIsaac}
+\title{Introduction to Complexity and Computability: Homework 3}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\subsection*{Homework Problem 1}
+
+Consider the language $S = \{\langle M_1, M_2\rangle~|~L(M_1) \cap L(M_2) = \emptyset\}$.
+Decide whether the language $S$ is a decidable language. If it is not decidable,
+decide if $S$ or $\bar{S}$ is a partially decidable language.
+\newline
+\newline
+By Rice's Theorem, language S is undecidable because the language is nontrivial.
+
+Fix $M_2$ so that $L(M_2) = \{01\}$. Then it is nontrivial because for $M_1$ some Turing Machines
+accept languages that have an empty intersection with $\{01\}$ and others do not.
+
+It is also clear that the property is a property of the language and not of the 
+Turing Machines. If two TMs recognise the same language ($L(M_1') = L(M_1'')$),
+then either both have descriptions in $S$ or neither do.
+%It is nontrivial because some Turing Machines accept languages that have an empty intersection
+%with the language accepted by another TM, but other TMs accept a language that
+%share part of the language with the language accepted by another TM.
+%
+%For example, let $L(M_1) = \{x\}$, and let $L(M_2) = \{y\}$, where $x \neq y$.
+%Then $L(M_1) \cap L(M_2) = \emptyset$, and $\langle M_1, M_2\rangle \in S$.
+%Now let $L(M_2) = \{x, y\}$, then $L(M_1) \cap L(M_2) \neq \emptyset$, and
+%$\langle M_1, M_2\rangle \notin S$.
+\newline
+\newline
+$\bar{S}$ is partially decidable. $\bar{S} = \{\langle M_1, M_2\rangle~|~
+L(M_1) \cap L(M_2) \neq \emptyset\}$.
+
+For each $x$ in $\Sigma^*$ in lexicographic order, run $M_1$ on $x$ for one move,
+and run $M_2$ on $x$ for one move.
+If $M_1$ halts and accepts, add $x$ to the set of strings of the language accepted by $M_1$.
+If $M_2$ halts and accepts, add $x$ to the set of strings of the language accepted by $M_2$.
+
+At each step of the computation, the Turing Machines run one more step of all
+previous strings, plus the first step of the next $x$. I.e. First, perform the
+first move of the TM for the first $x$, then perform the second step of the TM
+for the first $x$ and the first step of the TM for the second $x$. Then perform
+the third step of the TM for the first $x$, the second step of the TM for the
+second $x$, and the first step of the TM for the third $x$, and so on.
+If there is a string that is accepted by both $M_1$ and $M_2$ (that is, string $w$
+has been added to both the set of strings of the language accepted by $M_1$ and
+the set of strings of the language accepted by $M_2$), then $\langle M_1, M_2 \rangle \in \bar{S}$.
+\newline
+\newline
+$S$ is not partially decidable. By Post's Theorem, if both $S$ and $\bar{S}$ are
+partially decidable, then $S$ is decidable. But $S$ is undecidable, and $\bar{S}$
+is partially decidable, so $S$ must not be partially decidable.
+
+\subsection*{Homework Problem 2}
+Consider the language 
+$$S = \{\langle M \rangle~|~(\forall w \in \Sigma^*)(w \in L(M) \iff w^R \in L(M))\}.$$
+
+Show that the following holds:
+\newline
+\newline
+(a) $L_u \leq_m S$
+
+Find $$f(\langle M, x \rangle) = \langle M' \rangle$$
+
+Given $M$ and $x$, define $M'$:
+
+On input $w$:
+\begin{itemize}
+	\itemsep 0em
+	\item If $w = 10$, \textit{accept}.
+	\item If $w = 01$, run $M$ on $x$. If $M$ accepts, \textit{accept}. 
+	\item Otherwise, \textit{reject}.
+\end{itemize}
+
+$$
+L(M') = \begin{cases}
+	\{01, 10\} & \text{if}\ x \in L(M), \\
+	\{10\} & \text{otherwise}
+\end{cases}
+$$
+
+If $M$ accepts x, $L(M') = \{01, 10\}$, so $\langle M' \rangle \in S$. If $M$
+does not accept $x, L(M') = \{10\}$, so there is a string $w \in L(M')$ for which
+$w^R \notin L(M')$, and $\langle M' \rangle \notin S$. So we have a total
+computable function $f(\langle M, x \rangle) = \langle M' \rangle$, and $L_u \leq_m S$.
+%$\langle M, x \rangle \in L_u \iff x \in L(M) \iff (\forall w \in \Sigma^*)
+%(w \in L(M') \iff w^R \in L(M')) \iff \langle M' \rangle \in S$
+\newline
+\newline
+(b) $L_u \leq_m \bar{S}$
+
+%From the definition of mapping reducibility, it follows that a function $f$ for
+%which $L_u \leq_m \bar{S}$ is the same for $\bar{L_u} \leq_m S$, so it is enough
+%to show that
+%$\bar{L_u} \leq_m S$, where $\bar{L_u} = \{\langle M, x \rangle~|~x \notin L(M)\}.
+%
+%The proof is similar to part (a).
+%
+%$$f(\langle M, x \rangle) = \langle M' \rangle$$
+%
+%Given $M$ and $x$, define $M'$:
+%
+%On input $w$:
+%\begin{itemize}
+%	\itemsep 0em
+%	\item If $w = 10$, \textit{accept}.
+%	\item If $w = 01$, run $M$ on $x$. If $M$ accepts, \textit{reject}. 
+%		If $M$ rejects, \textit{accept}.
+%	\item Otherwise, \textit{reject}.
+%\end{itemize}
+%
+%$$
+%L(M') = \begin{cases}
+%	\{01, 10\} & \text{if}\ x \notin L(M), \\
+%	\{10\} & \text{otherwise}
+%\end{cases}
+
+%Alternative View:
+
+$$\bar{S} = \{\langle M \rangle | (\exists w \in \Sigma^*) (w \in L(M) \iff w^R \notin L(M)\}$$
+
+Given $M$ and $x$, define $M'$:
+
+On input $w$:
+\begin{itemize}
+	\item If $w = 01$, run $M$ on $x$. If $M$ accepts, \textit{accept}.
+	\item Otherwise, \textit{reject}.
+\end{itemize}
+
+If $M$ accepts $x$, $01$ is in the language accepted by $M'$ and its reverse
+($10$) isn't. So $\langle M' \rangle \in \bar{S}$. If $M$ does not accept $x$,
+the language is empty, so there is no string $w$ for which the string is in the
+language and its reverse isn't. So $\langle M' \rangle \notin \bar{S}$, and we
+have a total computable function $f(\langle M, x \rangle) = \langle M' \rangle$.
+So $L_u \leq_m \bar{S}$.
+
+
+%Given $M$ and $x$, define $M'$:
+%
+%On input $w$:
+%\begin{itemize}
+%	\itemsep 0em
+%	\item If $w = 10$, accept.
+%	\item If $w = 01$:
+%\begin{itemize}
+%	\itemsep 0em
+%	\item Run $M$ on $x$. If $M$ accepts, accept.
+%	\item Else, accept.
+%\end{itemize}
+%	\item Otherwise, reject.
+%\end{itemize}
+%
+%If M on x accepts, $x \in L(M)$, $L(M') = \{10\}$, so $\langle M' \rangle \in \bar{S}$
+%
+%If M on x rejects, x \notin L(M), 
+
+
+
+
+\end{document}

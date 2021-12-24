@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usetikzlibrary{chains,fit,shapes}
+
+\author{Andrew McIsaac}
+\title{Introduction to Complexity and Computability: Homework 2}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\subsection*{Homework Problem 1}
+Show that the following languages are partially decidable:
+
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+	\item $ETx = \{\langle M,x \rangle~|~M(x) \downarrow\ \textrm{and at the end
+		of computation the tape of $M$ is empty}\}$
+
+		Use a Universal Turing Machine to simulate $M$ on $x$. If $M(x)\downarrow$
+		then clear the tape of M and accept.
+
+	\item $ETE = \{\langle M \rangle~|~(\exists~x)(M(x)\downarrow \textrm{and at
+		the end of computation the tape of $M$ is empty)}\}$
+
+		Run $ETx$ on every possible input string $x$. Run the first Turing Machine $ETx_{1}$
+		on input $x_{1}$ for one step, then the TMs $ETx_{1}$ and $ETx_{2}$ for
+		one step on input $x_{1}$ and $x_{2}$ respectively, and so on for every
+		single $x$. If there is an $x$ that is accepted by $ETx$, clear the tape
+		of M and $ETE$ accepts.
+	
+\end{enumerate}
+
+\subsection*{Homework Problem 2}
+Show that the language $ETx$ is not decidable.
+
+The proof is by contradiction. Assume that $ETx$ is decidable. Then there is a
+TM $P$ that decides $ETx$. Then construct a TM $Q$ to decide $L_\mathcal{U}$,
+the universal language.
+
+$Q$ proceeds as follows on the input $\langle M,x \rangle$:
+\begin{enumerate}
+	\itemsep0em
+	\item Run $P$ on $\langle M, x \rangle$.
+	\item If $P$ rejects, reject.
+	\item If P accepts, simulate $M$ on $x$ until it halts and the tape of $M$
+		is empty.
+	\item If $M$ accepts, accept. If $M$ rejects, reject.
+\end{enumerate}
+
+If $P$ decides $ETx$, $Q$ decides $L_\mathcal{U}$. But $L_\mathcal{U}$ is
+undecidable, so $ETx$ must also be undecidable.
+
+\end{document}

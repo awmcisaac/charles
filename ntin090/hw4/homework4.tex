@@ -1,0 +1,170 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+%\usepackage{amsmath}
+\usepackage{enumitem}
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{Introduction to Computability and Complexity - Homework 4}
+\date{\today}
+\author{Andrew McIsaac}
+
+\begin{document}
+\maketitle
+
+Determine the correct inclusion relationship between the following pairs of
+classes. That is, fill in one of the relation symbols $\subsetneq, \subseteq, =,
+\supseteq, \supsetneq$, or ? (if we cannot say based on our knowledge). Justify
+your answers.
+\begin{enumerate}[label=(\alph*)] 
+
+	%%  (a)  %%
+	\item SPACE($n$) ? TIME($2^{\log^{3}n}$)
+
+		If we want to show any subset relationship from SPACE to TIME, we would
+		have to go through Theorem $1.\text{iii}$ and the Corollary to Theorem
+		2. But NSPACE($n$) $\not\subseteq$ TIME($2^{\log^{3}n}$), as $n \notin
+		o(\log^{3}n)$.
+
+		If we want to show any subset relationship from TIME to SPACE, we would
+		have to at least go through SPACE($2^{\log^{3}n}$) (either by 1.i or by
+		1.ii and 1.iv), and then by Theorem 4 show that
+		$2^{\log^{3}n} \in o(n)$, which is false.
+
+		Therefore we cannot say the inclusion relationship.
+
+	%%  (b)  %%
+	\item TIME($2^{\log^{3}n}$) $\supsetneq$ NSPACE($\log^{2}n$)
+		$$
+		\text{NSPACE}(\log^{2}n) \overset{(1)}{\subseteq} 
+		\text{TIME}(2^{\log^{2.5}n})
+		\overset{(2)}{\subsetneq} \text{TIME}(2^{\log^{3}n})
+		$$
+		(1) By Corollary. $\log^{2}n \in o(\log^{2.5}n)$ \\
+		(2) By Theorem 5. 
+		$$
+		2^{\log^{2.5}n} \in o\left(\frac{2^{\log^3n}}{\log^3n}\right)
+		\iff 
+		\lim_{n \to \infty} \frac{2^{\log^{2.5}n} \cdot \log^3n}{2^{\log^3n}}=0
+		$$
+		$2^{\log^3n}$ dominates, so at the limit the equation holds.
+
+	%%  (c)  %%
+	\item NSPACE($\log^{2}n$) $\subsetneq$ NTIME($2^{\log^{3}n}$)
+		$$
+		\text{NSPACE}(\log^2n)\overset{(1)}{\subsetneq} \text{TIME}(2^{\log^3n})
+		\overset{(2)}{\subseteq} \text{NTIME}(2^{\log^3n})
+		$$
+
+		(1) By Problem (b). \\
+		(2) By Theorem 1.ii. 
+
+	%%  (d)  %%
+	\item NTIME($2^{\log^{3}n}$) ? NTIME($2^{n\log n}$)
+		
+		To show an inclusion relationship from NTIME $\to$ NTIME, we'd have to
+		go through NTIME $\to$ SPACE $\to$ NSPACE $\to$ TIME $\to$ NTIME. For
+		NSPACE($f(n)$) $\subseteq$ TIME($2^{g(n)}$) such that $f(n) \in o(g(n))$
+		there is no possibility for either inclusion direction, so we cannot say
+		based on our knowledge.
+
+	%%  (e)  %%
+	\item NTIME($2^{n \log n}$) $\supsetneq$ SPACE($n$)
+		\begin{align}
+		\text{SPACE}(n) &\subsetneq \text{SPACE}(n\log(\log n))\\% 1
+		\text{SPACE}(n\log(\log n))	&\subseteq \text{NSPACE}(n\log(\log n))\\% 2
+		\text{NSPACE}(n\log(\log n)) &\subseteq \text{TIME}(2^{n\log n})\\% 3
+		\text{TIME}(2^{n\log n}) &\subseteq \text{NTIME}(2^{n\log n})% 4
+		\end{align}
+
+		(1) By Theorem 4. Clearly $n \in o(n\log(\log n))$\\
+		(2) By Theorem 1.iii. \\
+		(3) By Corollary.
+		$$
+		\lim_{n \to \infty} \frac{n\log(\log n)}{n\log n} 
+		= \frac{\log(\log n)}{\log n} = 0
+		$$
+		(4) By Theorem 1.ii.
+
+	%%  (f)  %%
+	\item SPACE($n$) $\supsetneq$ NSPACE($\log^{2} n$)
+		$$
+		\text{NSPACE}(\log^2n) \overset{(1)}{\subseteq} \text{SPACE}(\log^4n)
+		\overset{(2)}{\subsetneq} \text{SPACE}(n)
+		$$
+
+		(1) By Theorem 3. \\
+		(2) By Theorem 4. Clearly $\log^4n \in o(n)$
+
+	%%  (g)  %%
+	\item TIME($2^{\log^{3}n}$) $\subseteq$ NTIME($2^{\log^{3}n}$)
+		$$
+		\text{TIME}(2^{\log^3n})
+		\overset{(1)}{\subseteq} \text{NTIME}(2^{\log^3n})
+		$$
+
+		(1) By Theorem 1.ii.
+
+		Cannot be $\subsetneq$, as there would have to be a $g(n)$ greater than
+		$2^{\log^3n}$ so that Theorem 5 could apply, but also equal to
+		$2^{\log^3n}$ so that Theorem 1.ii can apply. Obviously this is not
+		possible. Further, there cannot be an inclusion relationship from NTIME
+		$\to$ TIME, as there would have to be an additional exponential factor
+		for TIME, from the Corollary.
+
+	%%  (h)  %%
+	\item NSPACE($\log^{2}n$) $\subsetneq$ NTIME($2^{n\log n}$)
+		\setcounter{equation}{0}
+		$$
+		\text{NSPACE}(\log^2n) \overset{(1)}{\subseteq} \text{TIME}(2^{\log^3n})
+		\overset{(2)}{\subsetneq} \text{TIME}(2^{n\log n})
+		\overset{(3)}{\subseteq} \text{NTIME}(2^{n\log n})
+		$$
+		(1) By Corollary. $\log^2n \in o(\log^3n)$ \\
+		(2) By Theorem 5.
+		$$
+		2^{\log^3n} \in o\left(\frac{2^{n\log n}}{n\log n}\right) \\
+		\iff \lim_{n \to \infty} \frac{2^{\log^3n} \cdot n\log n}{2^{n\log n}}=0
+		$$
+		$2^{n\log n}$ dominates, so the limit holds. \\
+		(3) By Theorem 1.ii.
+
+	%%  (i)  %%
+	\item NTIME($2^{\log^{3}n}$) ? SPACE($n$)
+
+		From SPACE $\to$ NTIME we would need to go from $n$ to something that
+		dominates $n$ in the exponent (going through the Corollary), which
+		$\log^3 n$ does not.
+
+		From NTIME $\to$ SPACE by Theorem 1.iv we get SPACE($2^{\log^3n}$), but
+		there is no way to get to SPACE($n$) from here.
+
+
+	%%  (j)  %%
+	\item NTIME($2^{n\log n}$) $\supsetneq$ TIME($2^{\log^{3}n}$)
+		$$
+		\text{TIME}(2^{\log^3n})
+		\overset{(1)}{\subsetneq} \text{TIME}(2^{n\log n})
+		\overset{(2)}{\subseteq} \text{NTIME}(2^{n\log n})
+		$$
+		(1) By Theorem 5. (Same proof as (2) in Problem (h)).
+
+		(2) By Theorem 1.ii.
+\end{enumerate}
+\end{document}
