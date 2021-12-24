@@ -1,0 +1,12 @@
+;englex.tak
+;TAKE file to load Englex description
+;at the PC-KIMMO prompt, type "take englex" (without quotes!)
+
+;!!!FIX THE PATHS FOR YOUR LOCAL SYSTEM!!!
+;DZ: The original englex.tak file had full paths in the load commands below.
+
+;;;set warnings off
+load rules english.rul
+load lexicon english.lex
+load grammar english.grm
+status

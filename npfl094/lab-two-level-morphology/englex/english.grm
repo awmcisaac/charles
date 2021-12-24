@@ -1,0 +1,531 @@
+;english.grm
+;word grammar for Englex
+;last modified 28-Nov-95
+
+;This grammar file _requires_ PC-KIMMO version 2.1!!!
+
+;Use this grammar file (english.grm) in conjunction with the lexicon
+;file english.lex. This file is exactly the same as english2.grm except
+;that these feature abbreviations are defined differently: 
+;denom, deverb, deadj, denom+deadj, deverb+deadj
+
+;Englex 2.0b5
+;Copyright (C) 1991-1995, Summer Institute of Linguistics, Inc.
+
+;Evan Antworth                    |  e-mail: evan.antworth@sil.org
+;Academic Computing Department    |  phone:  214-709-3346, -2418
+;Summer Institute of LInguistics  |  fax:    214-709-3363
+;7500 W. Camp Wisdom Road
+;Dallas, TX 75236
+
+;=======================================================
+;   Feature template definitions
+;=======================================================
+
+;----------------------
+;Prefixes: pos\from_pos
+;----------------------
+
+LET n\n be <from_pos> = N
+
+LET v\v be { [from_pos: V]
+
+             [from_pos: N
+              base_pos: V
+              drvstem: +]
+
+             [from_pos: AJ
+              base_pos: V
+              drvstem: +] }
+
+LET v\n be [from_pos: N
+            change_pos: +
+            head: [pos: V
+                   vform: !BASE
+                   finite: !-]]
+
+LET v\aj be [from_pos: AJ
+             change_pos: +
+             head: [pos: V
+                    vform: !BASE
+                    finite: !-]]
+
+LET aj\aj be { [from_pos: AJ]
+
+               [from_pos: N
+                base_pos: AJ
+                drvstem: +]
+
+               [from_pos: AV
+                base_pos: AJ
+                drvstem: +] }
+
+LET n-v-aj\x be { [n\n] [v\v] [aj\aj] }
+LET v-aj\x be { [v\v] [aj\aj] }
+LET v\aj-n be { [v\aj] [v\n] }
+
+;----------------------
+;Suffixes: from_pos/pos
+;----------------------
+
+LET n/n be [from_pos: N
+            base_pos: !N
+            head: [pos: N
+                   number: !SG
+                   agr: [3sg: !+]]]
+
+LET n/v be [from_pos: N
+            base_pos: !N
+            head: [pos: V
+                   vform: !BASE
+                   finite: !-]]
+
+LET n/aj be [from_pos: N
+             base_pos: !N
+             head: [pos: AJ
+                    aform: !ABS
+                    verbal: -]]
+
+LET n/av be [from_pos: N
+             base_pos: !N
+             head: [pos: AV]]
+
+LET v/v be  [from_pos: V
+             base_pos: !V
+             head: [pos: V
+                    vform: !BASE
+                    finite: !-]]
+
+LET v/n be  [from_pos: V
+             base_pos: !V
+             head: [pos: N
+                    number: !SG
+                    agr: [3sg: !+]]]
+
+LET v/aj be [from_pos: V
+             base_pos: !V
+             head: [pos: AJ
+                    aform: !ABS
+                    verbal: -]]
+
+; from_pos/base_pos/pos
+; +ence, +ance, +ability
+LET v/aj/n be  [from_pos: V
+                base_pos: AJ
+                head: [pos: N
+                       number: !SG
+                       agr: [3sg: !+]]
+                drvstem: +]
+
+LET v/av be [from_pos: V
+             base_pos: !V
+             head: [pos: AV]]
+
+; from_pos/base_pos/pos
+; +ably
+LET v/aj/av be [from_pos: V
+                base_pos: AJ
+                head: [pos: AV]
+                drvstem: +]
+
+LET aj/aj be [from_pos: AJ
+              base_pos: !AJ
+              head: [pos: AJ
+                     aform: !ABS
+                     verbal: -]]
+
+LET aj/n be [from_pos: AJ
+             base_pos: !AJ
+             head: [pos: N
+                    number: !SG
+                    agr: [3sg: !+]]]
+
+LET aj/v be [from_pos: AJ
+             base_pos: !AJ
+             head: [pos: V
+                    vform: !BASE
+                    finite: !-]]
+
+LET aj/av be [from_pos: AJ
+              base_pos: !AJ
+              head: [pos: AV]]
+
+LET n-aj/n be { [n/n] [aj/n] }
+LET n/n-aj be { [n/n] [n/aj] }
+
+;------------------------------------------------
+;Features for handling irregular stems
+;------------------------------------------------
+
+;denominal, e.g. beautify < beauty
+LET denom be [root_pos: N
+              base_pos: N
+              drvstem:  +]
+
+;deverbal, e.g. calculable < calculate
+LET deverb be [root_pos: V
+               base_pos: V
+               drvstem:  +]
+
+;de-adjectival, e.g. electrify < electric
+LET deadj be [root_pos: AJ
+              base_pos: AJ
+              drvstem:  +]
+
+;denominal + adjectivalizer, e.g. peaceably < peace+able
+LET denom+deajr be { [root_pos: N
+                      base_pos: AJ
+                      drvstem:  +]
+
+                     [root_pos: N
+                      base_pos: N
+                      drvstem:  +] }
+
+;deverbal + adjectivalizer, e.g. negotiability < negotiate+able
+LET deverb+deajr be { [root_pos: V
+                       base_pos: AJ
+                       drvstem:  +]
+
+                      [root_pos: V
+                       base_pos: V
+                       drvstem:  +] }
+
+;------------------------------------------------
+;Inflectional categories
+;------------------------------------------------
+
+LET 1 be <head person> = 1
+         <head agr 3sg> = -
+LET 2 be <head person> = 2
+         <head agr 3sg> = -
+LET sg be <head number> = SG
+LET pl be <head number> = PL
+          <head agr 3sg> = -
+LET sg-pl be { [sg] [pl] }
+;;;LET sg-pl be <head number> = { PL SG }
+;;;LET sg-pl be { [number:SG] [number:PL] }
+LET acc be <head case> = ACC
+LET gen be <head case> = GEN
+LET ind be <head case> = IND
+LET nom-acc be <head case> = { NOM ACC }
+LET acc-gen be <head case> = { ACC GEN }
+LET gen-ind be <head case> = { GEN IND }
+LET rflx be <head reflex> = +
+LET wh be <head wh> = +
+LET -3sg be <head agr 3sg> = -
+LET s be   [head: [tense: PRES
+                   agr: [3sg: +]
+                   finite: +
+                   vform: S]]
+LET ed be  [head: [tense: PAST
+                   finite: +
+                   vform: ED]]
+LET en be  [head: [finite: -
+                   vform: EN]]
+LET ing be [head: [finite: -
+                   vform: ING]]
+LET reg be <reg> = +
+LET irreg be <reg> = -
+LET comp be <head aform> = COMP
+LET super be <head aform> = SUPER
+LET infmark be <head pos> = INF
+LET modal be <head modal> = +
+LET neg be <head neg> = +
+LET compound be <cat> = COMPOUND
+LET proper be <head proper> = +
+
+;;;the next two features are used in the lexicon but not presently used in the grammar
+LET ss be <stress_shift> = +
+LET boundstem be <boundstem> = +
+
+;------------------------------------------------
+;Stem/affix cooccurrence restrictions
+;------------------------------------------------
+
+;;;see defaults for V
+LET rev be    <prefix_cooccur rev1> = +     ;un+ (reversive, i.e. untie)
+
+LET deg2 be   <prefix_cooccur deg2> = +     ;co+
+LET ~deg2 be  <prefix_cooccur deg2> = -     ;co+
+
+;;;see defaults for N
+LET ajr8 be   <suffix_cooccur ajr8> = +     ;+ed
+LET ajr13 be  <suffix_cooccur ajr13> = +    ;+ly
+
+LET ajr14 be  <suffix_cooccur ajr14> = +    ;+y
+LET ~ajr14 be <suffix_cooccur ajr14> = -    ;+y
+LET ajr17 be  <suffix_cooccur ajr17> = +    ;+al,+ual,+ial
+LET ~ajr17 be <suffix_cooccur ajr17> = -    ;+al,+ual,+ial
+LET ajr20 be  <suffix_cooccur ajr20> = +    ;+ic
+LET ~ajr20 be <suffix_cooccur ajr20> = -    ;+ic
+LET nr10 be   <suffix_cooccur nr10> = +     ;+eer
+LET ~nr10 be  <suffix_cooccur nr10> = -     ;+eer
+LET nr12 be   <suffix_cooccur nr12> = +     ;+ess
+LET ~nr12 be  <suffix_cooccur nr12> = -     ;+ess
+LET nr15 be   <suffix_cooccur nr15> = +     ;+ling
+LET ~nr15 be  <suffix_cooccur nr15> = -     ;+ling
+LET nr19 be   <suffix_cooccur nr19> = +     ;+er
+LET ~nr19 be  <suffix_cooccur nr19> = -     ;+er
+LET nr22 be   <suffix_cooccur nr22> = +     ;+al
+LET ~nr22 be  <suffix_cooccur nr22> = -     ;+al
+LET nr23 be   <suffix_cooccur nr23> = +     ;+ition,+tion,+ion
+LET ~nr23 be  <suffix_cooccur nr23> = -     ;+ition,+tion,+ion
+LET nr26 be   <suffix_cooccur nr26> = +     ;+ance
+LET ~nr26 be  <suffix_cooccur nr26> = -     ;+ance
+LET nr31 be   <suffix_cooccur nr31> = -     ;+ist
+LET ~nr31 be  <suffix_cooccur nr31> = -     ;+ist
+
+;=======================================================
+;   Category defaults
+;=======================================================
+
+LET N be <cat> = ROOT           ;noun
+         <head pos> = N
+         <head number> = !SG
+         <head agr 3sg> = !+
+         <head proper> = !-
+         <head verbal> = -
+         <root_pos> = !N
+         <base_pos> = !N
+         <reg> = !+
+         <suffix_cooccur ajr8> = !-
+         <suffix_cooccur ajr13> = !-
+         <drvstem> = !-
+
+LET V be <cat> = ROOT           ;verb
+         <head pos> = V
+         <head vform> = !BASE
+         <root_pos> = !V
+         <base_pos> = !V
+         <reg> = !+
+         <lat> = !-
+         <prefix_cooccur rev1> = !-
+         <drvstem> = !-
+
+LET AJ be <cat> = ROOT          ;adjective
+          <head pos> = AJ
+          <head aform> = !ABS
+          <head verbal> = -
+          <root_pos> = !AJ
+          <base_pos> = !AJ
+          <reg> = !+
+          <drvstem> = !-
+
+LET AV be <cat> = ROOT          ;adverb
+          <head pos> = AV
+          <root_pos> = !AV
+          <base_pos> = !AV
+          <drvstem> = !-
+
+LET AUX be <cat> = ROOT         ;auxiliary verb
+           <head pos> = AUX
+           <head neg> = !-
+           <root_pos> = !AUX
+           <base_pos> = !AUX
+           <reg> = !+
+
+LET PP be <cat> = PARTICLE      ;preposition
+          <head pos> = PP
+
+LET PR be <cat> = PARTICLE      ;pronoun
+          <head pos> = PR
+          <head agr 3sg> = !+
+          <head number> = !SG
+          <head person> = !3
+          <head case> = !NOM
+          <head reflex> = !-
+          <head wh> = !-
+
+LET CJ be <cat> = PARTICLE      ;conjunction
+          <head pos> = !CJ
+
+LET DT be <cat> = PARTICLE      ;determiner
+          <head pos> = DT
+          <head wh> = !-
+
+LET GEN be <cat> = CLITIC       ;genitive clitic
+
+LET CNTR be <cat> = CLITIC      ;contractions
+            <head modal> = !-
+
+LET CD be { [N] [AJ] }          ;cardinal
+
+LET OD be { [N] [AJ] [AV] }     ;ordinal
+
+LET IJ be <cat> = PARTICLE      ;interjection
+          <head pos> = IJ
+
+;Words in multiple categories
+LET AUX-V be { [AUX] [V] }
+LET N-V be { [N] [V] }
+LET N-AJ be { [N] [AJ] }
+LET AJ-V be { [AJ] [V] }
+LET AJ-AV be { [AJ] [AV] }
+LET DT-PR be { [DT] [PR] }
+LET PP-CJ be { [PP] [CJ] }
+
+LET PREFIX be <change_pos> = !-
+LET SUFFIX be <drvstem> = !-
+LET Y_SUFF be <cat> = SUFFIX
+               <drvstem> = !-
+LET IC_SUFF be <cat> = SUFFIX
+               <drvstem> = !-
+LET PN_SUFF be <cat> = SUFFIX
+               <drvstem> = !-
+LET ORDR be <cat> = SUFFIX
+               <drvstem> = !-
+LET PT_SUFF be <cat> = SUFFIX
+               <drvstem> = !-
+
+;=======================================================
+;   Parameter settings
+;=======================================================
+
+Parameter: Start symbol is Word
+Parameter: Attribute order is cat head root root_pos
+
+;=======================================================
+;   Grammar rules
+;=======================================================
+
+;Non-terminal symbols: Word, Stem
+;Terminal symbols: PARTICLE, ROOT, PREFIX, SUFFIX, INFL, CLITIC, COMPOUND
+
+;This rule is a rough attempt to handle hyphenated compounds, e.g. door-knob.
+;It simply accepts any Word-Word combination (thus it grossly overrecognizes).
+RULE
+Word_1 -> Word_2 COMPOUND Word_3
+        <Word_3 clitic> = -
+        <Word_1 head> = <Word_3 head>
+        <Word_1 head> = <Word_3 head>
+        <Word_1 root> = <Word_3 root>
+        <Word_1 root_pos> = <Word_3 root_pos>
+
+RULE
+Word_1 -> Word_2 CLITIC
+        <Word_2 head agr> = <CLITIC head agr>
+        <Word_1 head> = <Word_2 head>
+        <Word_1 head clitic> = <CLITIC head>
+        <Word_1 head clitic cform> = <CLITIC gloss>
+        <Word_1 clitic> = -
+        <Word_1 root> = <Word_2 root>
+        <Word_1 root_pos> = <Word_2 root_pos>
+
+RULE 
+Word -> PARTICLE
+        <Word head> = <PARTICLE head>
+        <Word clitic> = -
+        <Word root> = <PARTICLE gloss>
+        <Word root_pos> = <PARTICLE head pos>
+
+;;;The <Stem participle> constraint prevents EN and ING verb forms from being
+;;;analyzed as adjective or noun UNLESS they are affixed. For example, "cooked"
+;;;as an adjective is ruled out, "uncooked" is analyzed as an adjective.
+RULE
+Word -> Stem
+        <Stem participle> = -
+        <Word head> = <Stem head>
+        <Word root> = <Stem root>
+        <Word root_pos> = <Stem root_pos>
+        <Word drvstem> = <Stem drvstem>
+        <Word clitic> = -
+
+RULE
+Word -> Stem INFL
+        <Stem reg> = <INFL reg>
+        <Stem head pos> = <INFL from_pos>
+        <Word head> = <INFL head>
+        <Word root> = <Stem root>
+        <Word root_pos> = <Stem root_pos>
+        <Word drvstem> = -
+        <Word clitic> = -
+
+RULE
+Stem_1 -> PREFIX Stem_2
+        <PREFIX from_pos> = <Stem_2 head pos>
+        <Stem_1 reg> = <Stem_2 reg>
+        <Stem_1 root> = <Stem_2 root>
+        <Stem_1 root_pos> = <Stem_2 root_pos>
+        <PREFIX drvstem> = <Stem_2 drvstem>
+        <Stem_1 drvstem> = <Stem_2 drvstem>
+        {
+        ;This rule is for prefixes that change the stem category (pos),
+        ; e.g. en+large
+        <PREFIX change_pos> = +
+        <Stem_1 head> = <PREFIX head>
+        /
+        ;This rule is for prefixes that do not change stem category (pos),
+        ; e.g. re+try
+        <PREFIX change_pos> = -
+        <Stem_1 head> = <Stem_2 head>
+        <PREFIX base_pos> = <Stem_2 base_pos>
+        <PREFIX prefix_cooccur> = <Stem_2 prefix_cooccur>
+        <Stem_1 suffix_cooccur> = <Stem_2 suffix_cooccur>   ;;;necessary???
+        }
+
+RULE
+Stem_1 -> Stem_2 SUFFIX
+        <Stem_2 head pos> = <SUFFIX from_pos>
+        <Stem_1 head> = <SUFFIX head>
+        <Stem_1 reg> = <SUFFIX reg>
+        <Stem_1 prefix_cooccur> = <Stem_2 prefix_cooccur>
+        <Stem_2 suffix_cooccur> = <SUFFIX suffix_cooccur>
+        <Stem_1 root> = <Stem_2 root>
+        <Stem_1 root_pos> = <Stem_2 root_pos>
+        <Stem_1 base_pos> = <SUFFIX base_pos>
+        <Stem_1 drvstem> = <SUFFIX drvstem>
+
+RULE
+Stem -> ROOT
+        <Stem head> = <ROOT head>
+        <Stem reg> = <ROOT reg>
+        <Stem prefix_cooccur> = <ROOT prefix_cooccur>
+        <Stem suffix_cooccur> = <ROOT suffix_cooccur>
+        <Stem root> = <ROOT gloss>
+        <Stem root_pos> = <ROOT root_pos>
+        <Stem base_pos> = <ROOT base_pos>
+        <Stem drvstem> = <ROOT drvstem>
+
+;;;The feature verbal in the next three rules is used by sample English sentence
+;;;grammar supplied with PC-PATR
+
+;Rule to convert -en participle to adjective
+RULE
+Stem -> Word
+        <Word head pos> = V
+        <Word head vform> = EN
+        <Stem head pos> = AJ
+        <Stem head aform> = ABS
+        <Stem head verbal> = +
+        <Stem participle> = +
+        <Stem root> = <Word root>
+        <Stem root_pos> = <Word root_pos>
+        <Stem drvstem> = <Word drvstem>
+
+;Rule to convert -ing participle to adjective
+RULE
+Stem -> Word
+        <Word head pos> = V
+        <Word head vform> = ING
+        <Stem head pos> = AJ
+        <Stem head aform> = ABS
+        <Stem head verbal> = +
+        <Stem participle> = +
+        <Stem root> = <Word root>
+        <Stem root_pos> = <Word root_pos>
+        <Stem drvstem> = <Word drvstem>
+
+;Rule to convert -ing participle to noun
+RULE
+Stem -> Word
+        <Word head pos> = V
+        <Word head vform> = ING
+        <Stem head pos> = N
+        <Stem head number> = SG
+        <Stem head verbal> = +
+        <Stem participle> = +
+        <Stem root> = <Word root>
+        <Stem root_pos> = <Word root_pos>
+        <Stem drvstem> = <Word drvstem>
+
+END

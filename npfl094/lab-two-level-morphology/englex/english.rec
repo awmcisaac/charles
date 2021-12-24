@@ -1,0 +1,708 @@
+;ENGLISH.REC
+;16-Nov-95
+;based on Englex 2.0b5 using \gl1
+
+cat
+`cat     `cat
+
+cats
+`cat+s     `cat+PL
+
+cat's
+`cat+'s     `cat+GEN
+`cat+'s     `cat+have
+`cat+'s     `cat+be
+
+cats'
+`cat+s+'s     `cat+PL+GEN
+
+fox
+`fox     `fox
+
+foxes
+`fox+s     `fox+PL
+
+fox's
+`fox+'s     `fox+GEN
+`fox+'s     `fox+have
+`fox+'s     `fox+be
+
+foxes'
+`fox+s+'s     `fox+PL+GEN
+
+kiss
+`kiss     `kiss
+
+kisses
+`kiss+s     `kiss+PL
+`kiss+s     `kiss+3SG
+
+kiss's
+`kiss+'s     `kiss+GEN
+`kiss+'s     `kiss+have
+`kiss+'s     `kiss+be
+
+kisses'
+`kiss+s+'s     `kiss+PL+GEN
+
+kissed
+`kiss+ed     `kiss+ED
+`kiss+ed     `kiss+EN
+
+kissing
+`kiss+ing     `kiss+ING
+
+kissable
+`kiss+able     `kiss+AJR25a
+
+church
+`church     `church
+
+churches
+`church+s     `church+PL
+
+church's
+`church+'s     `church+GEN
+`church+'s     `church+have
+`church+'s     `church+be
+
+churches'
+`church+s+'s     `church+PL+GEN
+
+lash
+`lash     `lash
+
+lashes
+`lash+s     `lash+PL
+`lash+s     `lash+3SG
+
+lash's
+`lash+'s     `lash+GEN
+`lash+'s     `lash+have
+`lash+'s     `lash+be
+
+lashes'
+`lash+s+'s     `lash+PL+GEN
+
+ski
+`ski     `ski
+
+skis
+`ski+s     `ski+PL
+`ski+s     `ski+3SG
+
+ski's
+`ski+'s     `ski+GEN
+`ski+'s     `ski+have
+`ski+'s     `ski+be
+
+skis'
+`ski+s+'s     `ski+PL+GEN
+
+skied
+`ski+ed     `ski+ED
+`ski+ed     `ski+EN
+
+skiing
+`ski+ing     `ski+ING
+
+skiable
+`ski+able     `ski+AJR25a
+
+skier
+`ski+er     `ski+NR19
+
+skiers
+`ski+er+s     `ski+NR19+PL
+
+skier's
+`ski+er+'s     `ski+NR19+GEN
+`ski+er+'s     `ski+NR19+have
+`ski+er+'s     `ski+NR19+be
+
+skiers'
+`ski+er+s+'s     `ski+NR19+PL+GEN
+
+mouse
+`mouse     `mouse
+
+mouse's
+`mouse+'s     `mouse+GEN
+`mouse+'s     `mouse+have
+`mouse+'s     `mouse+be
+
+mice
+`mice     `mouse
+
+mice's
+`mice+'s     `mouse+GEN
+
+ice
+`ice     `ice
+
+ice's
+`ice+'s     `ice+GEN
+`ice+'s     `ice+have
+`ice+'s     `ice+be
+
+boy
+`boy     `boy
+
+boys
+`boy+s     `boy+PL
+
+boy's
+`boy+'s     `boy+GEN
+`boy+'s     `boy+have
+`boy+'s     `boy+be
+
+boys'
+`boy+s+'s     `boy+PL+GEN
+
+spy
+`spy     `spy
+
+spies
+`spy+s     `spy+PL
+`spy+s     `spy+3SG
+
+spy's
+`spy+'s     `spy+GEN
+`spy+'s     `spy+have
+`spy+'s     `spy+be
+
+spies'
+`spy+s+'s     `spy+PL+GEN
+
+spied
+`spy+ed     `spy+ED
+`spy+ed     `spy+EN
+
+spying
+`spy+ing     `spy+ING
+
+flies
+`fly+s     `fly+PL
+`fly+s     `fly+3SG
+
+being
+`being     be
+
+try
+`try     `try
+
+tries
+`try+s     `try+PL
+`try+s     `try+3SG
+
+tried
+`try+ed     `try+ED
+`try+ed     `try+EN
+
+trying
+`try+ing     `try+ING
+
+reliable
+re`ly+able     re`ly+AJR25a
+
+tie
+`tie     `tie
+`tie     `tie
+
+ties
+`tie+s     `tie+PL
+`tie+s     `tie+3SG
+
+tied
+`tie+ed     `tie+ED
+`tie+ed     `tie+EN
+
+tying
+`tie+ing     `tie+ING
+
+tieable
+`tie+able     `tie+AJR25a
+
+untie
+un+`tie     REV1+`tie
+
+unties
+un+`tie+s     REV1+`tie+3SG
+
+untied
+un+`tie+ed     NEG4+`tie+EN
+un+`tie+ed     REV1+`tie+ED
+un+`tie+ed     REV1+`tie+EN
+
+untying
+un+`tie+ing     NEG4+`tie+ING
+un+`tie+ing     REV1+`tie+ING
+
+untieable
+un+`tie+able     NEG4+`tie+AJR25a
+un+`tie+able     REV1+`tie+AJR25a
+
+go
+`go     `go
+
+goes
+`go+s     `go+3SG
+
+going
+`go+ing     `go+ING
+
+went
+`went     `go
+
+gone
+`gone     `go
+
+sleep
+`sleep     `sleep
+`sleep     `sleep
+
+sleeps
+`sleep+s     `sleep+PL
+`sleep+s     `sleep+3SG
+
+sleeping
+`sleep+ing     `sleep+ING
+
+slept
+`slept     `sleep
+`slept     `sleep
+
+slip
+`slip     `slip
+
+slips
+`slip+s     `slip+PL
+`slip+s     `slip+3SG
+
+slipping
+`slip+ing     `slip+ING
+
+slipped
+`slip+ed     `slip+ED
+`slip+ed     `slip+EN
+
+hopped
+`hop+ed     `hop+ED
+`hop+ed     `hop+EN
+
+hoped
+`hope+ed     `hope+ED
+`hope+ed     `hope+EN
+
+rubbing
+`rub+ing     `rub+ING
+
+rubbish
+`rubbish     `rubbish
+
+refer
+re`fer     re`fer
+
+refers
+re`fer+s     re`fer+3SG
+
+referring
+re`fer+ing     re`fer+ING
+
+referred
+re`fer+ed     re`fer+ED
+re`fer+ed     re`fer+EN
+
+referrable
+re`fer+able     re`fer+AJR25a
+
+travel
+`travel     `travel
+
+travels
+`travel+s     `travel+PL
+`travel+s     `travel+3SG
+
+traveling
+`travel+ing     `travel+ING
+
+traveled
+`travel+ed     `travel+ED
+`travel+ed     `travel+EN
+
+traveler
+`travel+er     `travel+NR19
+
+move
+`move     `move
+
+moves
+`move+s     `move+PL
+`move+s     `move+3SG
+
+moving
+`move+ing     `move+ING
+
+moved
+`move+ed     `move+ED
+`move+ed     `move+EN
+
+movable
+`move+able     `move+AJR25a
+
+believe
+be`lieve     be`lieve
+
+believes
+be`lieve+s     be`lieve+3SG
+
+believed
+be`lieve+ed     be`lieve+ED
+be`lieve+ed     be`lieve+EN
+
+believing
+be`lieve+ing     be`lieve+ING
+
+believer
+be`lieve+er     be`lieve+NR19
+
+believable
+be`lieve+able     be`lieve+AJR25a
+
+trace
+`trace     `trace
+`trace     `trace
+
+traces
+`trace+s     `trace+PL
+`trace+s     `trace+3SG
+
+tracing
+`trace+ing     `trace+ING
+
+traced
+`trace+ed     `trace+ED
+`trace+ed     `trace+EN
+
+traceable
+`trace+able     `trace+AJR25a
+
+retrace
+re+`trace     ORD5+`trace
+
+retraces
+re+`trace+s     ORD5+`trace+3SG
+
+retracing
+re+`trace+ing     ORD5+`trace+ING
+
+retraced
+re+`trace+ed     ORD5+`trace+ED
+re+`trace+ed     ORD5+`trace+EN
+
+retraceable
+re+`trace+able     ORD5+`trace+AJR25a
+
+manage
+`manage     `manage
+
+manages
+`manage+s     `manage+3SG
+
+managing
+`manage+ing     `manage+ING
+
+managed
+`manage+ed     `manage+ED
+`manage+ed     `manage+EN
+
+manageable
+`manage+able     `manage+AJR25a
+
+manager
+`manage+er     `manage+NR19
+
+change
+`change     `change
+
+changes
+`change+s     `change+PL
+`change+s     `change+3SG
+
+changing
+`change+ing     `change+ING
+
+changed
+`change+ed     `change+ED
+`change+ed     `change+EN
+
+changeable
+`change+able     `change+AJR25a
+
+changer
+`change+er     `change+NR19
+
+agree
+a`gree     a`gree
+
+agrees
+a`gree+s     a`gree+3SG
+
+agreed
+a`gree+ed     a`gree+ED
+a`gree+ed     a`gree+EN
+
+agreeing
+a`gree+ing     a`gree+ING
+
+agreeable
+a`gree+able     a`gree+AJR25a
+
+disagree
+dis+a`gree     REV3+a`gree
+
+disagrees
+dis+a`gree+s     REV3+a`gree+3SG
+
+disagreed
+dis+a`gree+ed     REV3+a`gree+ED
+dis+a`gree+ed     REV3+a`gree+EN
+
+disagreeing
+dis+a`gree+ing     REV3+a`gree+ING
+
+disagreeable
+dis+a`gree+able     REV3+a`gree+AJR25a
+
+referee
+refer`ee     refer`ee
+
+referees
+refer`ee+s     refer`ee+PL
+refer`ee+s     refer`ee+3SG
+
+referee's
+refer`ee+'s     refer`ee+GEN
+refer`ee+'s     refer`ee+have
+refer`ee+'s     refer`ee+be
+
+referees'
+refer`ee+s+'s     refer`ee+PL+GEN
+
+refereed
+refer`ee+ed     refer`ee+ED
+refer`ee+ed     refer`ee+EN
+
+refereeing
+refer`ee+ing     refer`ee+ING
+
+refereeable
+refer`ee+able     refer`ee+AJR25a
+
+hoe
+`hoe     `hoe
+
+hoes
+`hoe+s     `hoe+PL
+`hoe+s     `hoe+3SG
+
+hoed
+`hoe+ed     `hoe+ED
+`hoe+ed     `hoe+EN
+
+hoeing
+`hoe+ing     `hoe+ING
+
+hoeable
+`hoe+able     `hoe+AJR25a
+
+dye
+`dye     `dye
+
+dyes
+`dye+s     `dye+PL
+`dye+s     `dye+3SG
+
+dyed
+`dye+ed     `dye+ED
+`dye+ed     `dye+EN
+
+dyeing
+`dye+ing     `dye+ING
+
+dyeable
+`dye+able     `dye+AJR25a
+
+argue
+`argue     `argue
+
+argues
+`argue+s     `argue+3SG
+
+argued
+`argue+ed     `argue+ED
+`argue+ed     `argue+EN
+
+arguing
+`argue+ing     `argue+ING
+
+arguable
+`argue+able     `argue+AJR25a
+
+clear
+`clear     `clear
+`clear     `clear
+
+unclear
+un+`clear     NEG4+`clear
+
+clearly
+`clear+ly     `clear+AVR1
+
+happy
+`happy     `happy
+
+unhappy
+un+`happy     NEG4+`happy
+
+happily
+`happy+ly     `happy+AVR1
+
+unhappily
+un+`happy+ly     NEG4+`happy+AVR1
+
+happier
+`happy+er     `happy+CMP
+
+unhappier
+un+`happy+er     NEG4+`happy+CMP
+
+unhappiest
+un+`happy+est     NEG4+`happy+SPR
+
+real
+`real     `real
+
+unreal
+un+`real     NEG4+`real
+
+really
+re+al`ly     ORD5+al`ly
+`real+ly     `real+AVR1
+
+clearer
+`clear+er     `clear+NR19
+`clear+er     `clear+CMP
+
+clearest
+`clear+est     `clear+SPR
+
+big
+`big     `big
+
+bigger
+`big+er     `big+CMP
+
+biggest
+`big+est     `big+SPR
+
+cool
+`cool     `cool
+
+cooler
+`cool+er     `cool+NR19
+`cool+er     `cool+CMP
+
+coolest
+`cool+est     `cool+SPR
+
+red
+`red     `red
+
+redder
+`red+er     `red+CMP
+
+reddest
+`red+est     `red+SPR
+
+redness
+`red+ness     `red+NR27
+
+boyish
+`boy+ish     `boy+AJR10
+
+boyishness
+`boy+ish+ness     `boy+AJR10+NR27
+
+spotty
+`spot+y     `spot+AJR14
+
+spottiness
+`spot+y+ness     `spot+AJR14+NR27
+
+friendly
+`friend+ly     `friend+AJR13
+
+friendliness
+`friend+ly+ness     `friend+AJR13+NR27
+
+unexpected
+un+ex`pect+ed     NEG4+ex`pect+EN
+
+unexpectedly
+un+ex`pect+ed+ly     NEG4+ex`pect+EN+AVR1
+
+writing
+`write+ing     `write+ING
+
+written
+`written     `write
+
+unwritten
+un+`written     NEG4+`write
+
+rewritten
+re+`written     ORD5+`write
+
+writings
+`write+ing+s     `write+ING+PL
+
+recategorize
+re+`categorize     ORD5+`category
+
+retied
+re+`tie+ed     ORD5+`tie+ED
+re+`tie+ed     ORD5+`tie+EN
+
+retying
+re+`tie+ing     ORD5+`tie+ING
+
+surprisingly
+sur`prise+ing+ly     sur`prise+ING+AVR1
+
+unsurprisingly
+un+sur`prise+ing+ly     NEG4+sur`prise+ING+AVR1
+
+misgivings
+mis+`give+ing+s     PEJ2+`give+ING+PL
+
+reanalyze
+re+`analyze     ORD5+`analyze
+
+reanalysis
+re+a`nalysis     ORD5+`analyze
+
+recalculable
+re+`calculable     ORD5+`calculate
+
+incalculable
+in+`calculable     NEG2a+`calculate
+
+inaccuracy
+in+`accuracy     NEG2a+`accurate
+
+enlarge
+en+`large     VR1a+`large
+
+enlargement
+en+`large+ment     VR1a+`large+NR25

@@ -1,0 +1,120 @@
+Date: Fri, 19 May 1995 10:36:14 -0500
+From: Evan.Antworth@sil.org (Evan L. Antworth)
+Subject: [14] Englex update
+To: pc-parse@sil.org
+Reply-to: PC-PARSE@sil.orgMIME-version: 1.0
+Comments: PC-PARSE Mailing List
+
+I have just released an update for Englex, numbered 2.0b4. It fixes a
+number of errors and makes several improvements (I hope!).
+
+The biggest change is that Englex now handles words with lexical
+capitalization, e.g. proper nouns. I am distinguishing lexical
+capitalization from orthographic capitalization. For words such as
+"September" and "France", capitalization is part of their lexical form.
+Thus "May", the month, can be distinguished from "may", the modal. Also,
+many acronyms have lexical capitalization, such as IBM and NATO.
+Orthographic capitalization refers to sentence-initial capitalization or
+use of all-caps for emphasis. Englex does not handle these cases; they must
+be handled with preprocessing.
+
+To effect this change, I have added the 26 upper case letters to the
+ALPHABET declared in the rules file (english.rul). I have been reluctant to
+do this for fear that adding another 26 feasible pairs would seriously
+degrade processing speed. However, I finally realized that lexical upper
+case letters almost never undergo any of the orthographic rules; so the
+upper case pairs have not been added to the rules. The result is only about
+a 10% increase in processing time. I think the considerable gain in
+descriptive power and processing accuracy is worth it.
+
+The lexicon entries in proper.lex and abbrev.lex (mainly) have also been
+changed to use lexical capitalization.
+
+I also added . (period) to the alphabet since it is used as a lexical
+letter in many abbreviations, e.g. U.S.A. The file abbrev.lex now uses
+lexical forms including periods. Note that this has nothing to do with
+handling period as a punctuation character (full stop at the end of a
+sentence).
+
+I created a new lexicon file named natural.lex which contains less common
+flora and fauna terms, etc. The file can be optionally loaded to save
+memory. See the file english.lex.
+
+I've also made various fixes and changes to the grammar file (english.grm)
+including the following.
+
+The features "lemma" and "lemma_pos" are now (more accurately) "root" and
+"root_pos".
+
+I'm trying to handle cooccurrence restrictions on affixes and roots. For
+example, the word "copies" would return two parses: copy+s (the expected
+one) and co+pie+s (if you can have a copresident, why not a copie?). In the
+general case you want to permit the prefix co+ to occur on nouns, but would
+like to block howlers like this. So I am using specific features to do it:
+
+LET deg2 be   <prefix_cooccur deg2> = +     ;co+
+LET ~deg2 be  <prefix_cooccur deg2> = -     ;co+
+
+The lexical entry for co+ has the feature [deg2 +] while specific nouns
+such as "pie" have the feature [deg2 -], thus blocking their unification.
+
+Note that while I have created some of the structure for handling such
+cooccurrence restrictions, I have not found all them! Send me your examples
+of parses you think should be blocked.
+
+Here is a point on which I would like to hear some discussion: how to
+handle participles. For example, the -en participle form of verbs can
+function as an adjective, as in "cooked vegetables"; it even takes
+adjectival affixes: "uncooked vegetables". To handle this, Englex produces
+both a verb (-en form) and an adjective parse of such words. Also, an -ing
+verb is parsed as a verb, an adjective, and a noun. This makes for a lot of
+parses. If the main use of Englex is to provide morphological information
+to a syntactic parser (such as P-PATR), is this the desired behavior? In
+this new update of Englex, I have added a feature contraint that blocks the
+adjective and noun parses of -en and -ing forms just in the case where they
+do NOT bear any derivational affixes. For example, "cooked" will be parsed
+as a verb (-en form), but "uncooked" as an adjective. You can reverse this
+behavior by finding the "Word = Stem" rule and commenting out the contraint
+"<Stem participle> = -".
+
+Below is information on how to obtain the Englex update.
+
+We also have an AppleEvents version of PC-KIMMO (AEKimmo) that supports
+AppleScript. We haven't released it yet. Is anyone interested in it?
+
+We are also close to releasing a new program using the PC-KIMMO parser.
+Called KTagger, it can be used to parse words and produce a tagged output
+in formats customized by the user. Watch this list!
+
+--Evan
+
+Evan Antworth                    |  e-mail: evan.antworth@sil.org
+Academic Computing Department    |  phone:  214-709-3346
+Summer Institute of LInguistics  |  fax:    214-709-3363
+7500 W. Camp Wisdom Road
+Dallas, TX 75236
+
+-----------------------------------------
+
+For more information on Englex (including on-line documentation), connect to our
+Web server or Gopher server at these URLs:
+
+    gopher://gopher.sil.org/11/gopher_root/pc-kimmo/v2/englex/
+    http://www.sil.org/pckimmo/v2/doc/englex.html
+
+Englex is directly available from these URLs:
+
+MS-DOS and Windows:
+    ftp://ftp.sil.org/data/pc-kimmo/dos/engl20b4.zip
+
+Macintosh:
+    ftp://ftp.sil.org/data/pc-kimmo/mac/englex20b4.sea_hqx
+
+UNIX:
+    ftp://ftp.sil.org/data/pc-kimmo/unix/englex20b4.tar_z
+
+Englex can also be retrieved via e-mail. Send a message to
+MAILSERV@SIL.ORG consisting of these two lines only:
+
+    HELP
+    INDEX

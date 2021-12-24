@@ -1,0 +1,13 @@
+Multichar_Symbols
++N +V +PastPart
++Past +PresPart +3P
++Sg +Pl
+LEXICON Root
+Noun ;
+Verb ;
+LEXICON Noun
+cat Ninfl;
+city Ninfl;
+LEXICON Ninfl
++N+Sg:0 #;
++N+Pl:^s #;

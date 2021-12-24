@@ -1,0 +1,365 @@
+ANNOUNCE.TXT
+------------
+
+Announcing...				(updated 28-Nov-95)
+
+Natural language parsing software from SIL (Summer Institute of Linguistics:
+
+* PC-KIMMO version 2.1b4 -- a morphological parser
+
+* KTagger version 1.0b6 -- tag words using the PC-KIMMO parser
+
+* Englex version 2.0b5 -- a morphological description of English
+
+* PC-PATR version 0.97a9 -- a syntactic parser
+
+Also,
+
+* PC-PARSE -- a mailing list devoted to SIL parsing software
+
+
+All of this software is available for MS-DOS, Windows, Macintosh, and Unix.
+All software and documentation are copyrighted "freeware": they can be used
+and redistributed at no charge, but cannot be resold or used in commercial
+products without permission from SIL.
+
+This software is still in prerelease status and will likely continue to be
+updated.  For the latest information on the software, connect to our Web
+server or Gopher server at these URLs:
+
+    http://www.sil.org/
+    gopher://gopher.sil.org/
+
+
+PC-KIMMO version 2
+------------------
+
+PC-KIMMO is a morphological parser based on Kimmo Koskenniemi's two-level
+model of morphology.  It was first released by SIL (Summer Institute of
+Linguistics) in 1990.  Version 2 (beta) is now available.  New features
+include the following:
+
+* The rules component supports multigraphs.
+
+* The rules component can read a rules file produced by Xerox's TWOLC
+  rule compiler.
+
+* Lexical entries have a new, more flexible encoding format.
+
+* Lexical entries permit a features field.
+
+* A word grammar component has been added.
+
+* The recognizer returns full parse trees and feature structures.
+
+* A new Synthesis command produces surface forms from morphological forms
+  (i.e. a sequence of morpheme glosses).
+
+* A Windows version is available (command-line interface only, but uses
+  Windows memory management).
+
+Of these new features, the word grammar component is the most significant.
+The word grammar component uses a unification-based parser based on the
+PATR-II formalism described by Stuart M. Shieber in "An Introduction to
+Unification- based Approaches to Grammar (CSLI, 1986).  The word grammar
+produces output such as this tree and feature structure for the word
+"enlargement":
+
+         Word 
+           |
+         Stem 
+      _____|______
+    Stem      SUFFIX 
+   ___|____    +ment 
+PREFIX  Stem
+  en+     |
+        ROOT 
+       `large 
+
+Word:
+[ head:  [ number:SG
+           pos:   N ]
+  lemma: `large
+  lemma_pos:AJ ]
+
+
+Note that the feature structure reports the part-of-speech (pos) of the word
+(something not possible with PC-KIMMO version 1).  Thus one new use of
+PC-KIMMO is part-of-speech tagging.
+
+For more information (including on-line documentation), connect to our Web
+server or Gopher server at these URLs:
+
+    http://www.sil.org/pckimmo/pc-kimmo.html
+    gopher://gopher.sil.org/11/gopher_root/pc-kimmo/
+
+The software is directly available from these URLs:
+
+MS-DOS and Microsoft Windows:
+    ftp://ftp.sil.org/software/dos/pc-kimmo/pck21b4.zip
+
+Macintosh:
+    ftp://ftp.sil.org/software/mac/pc-kimmo/pc-kimmo21b4.sea_hqx
+
+Unix (sources):
+    ftp://ftp.sil.org/software/unix/
+
+The software can also be retrieved via e-mail.  Send a message to
+MAILSERV@SIL.ORG consisting of these two lines only:
+
+    HELP
+    INDEX
+
+
+KTAGGER
+-------
+
+KTagger is a stand-alone application built with PC-KIMMO's basic parsing
+functions.  It accepts as input a word list file, consisting of one word per
+line, and produces as output a structured text file containing the
+morphological parse(s) of each word.  The content and format of the output
+file is determined by a "control" file constructed by the user.  KTagger can
+be used to do part-of-speech tagging, produce a word lexicon, or other
+structured output files.
+
+KTagger runs on these systems: Unix, MS-DOS, Windows, and Macintosh.  It is a
+batch-style program run by specifying command-line options.
+
+To use KTagger, you need a PC-KIMMO language description such as Englex.  The
+description must include a word grammar file.  You do not need PC-KIMMO itself
+to use KTagger.
+
+PC-KIMMO is a morphological parser based on Kimmo Koskenniemi's two-level
+model of morphology.  It was first released by SIL (Summer Institute of
+Linguistics) in 1990.  Version 2 (beta) is now available.
+
+
+Examples of possible output formats
+-----------------------------------
+
+By using customized control files, you can use KTagger to produce output files
+in a variety of formats.  Here are three examples of possible output file
+formats.  (The control files themselves are described below.) These examples
+use Englex as their language description.
+
+Assume an input file such as this, consisting of one word per line:
+
+time
+flies
+
+The first example, using the control file TDF.CTL, produces an output file in
+tab-delimited format (where the white space is actually a tab character)
+consisting of the input word and part-of-speech tag:
+
+time    V
+time    N
+flies   N
+flies   V
+
+The second example, using the control file SFM.CTL, produces an output file in
+"standard format" (backslash markers):
+
+\w time
+\lx `time
+\pos V
+\root `time
+\root_pos V
+
+\w time
+\lx `time
+\pos N
+\root `time
+\root_pos N
+
+\w flies
+\lx `fly+s
+\pos N
+\root `fly
+\root_pos N
+
+\w flies
+\lx `fly+s
+\pos V
+\root `fly
+\root_pos V
+
+The third example, using the control file SGML.CTL, produces an output file in
+SGML markup:
+
+<lexicon>
+<le><w>time</w><lx>`time</lx><pos>V</pos><root>`time</root><rootpos>V</rootp
+os></le>
+<le><w>time</w><lx>`time</lx><pos>N</pos><root>`time</root><rootpos>N</rootp
+os></le>
+<le><w>flies</w><lx>`fly+s</lx><pos>N</pos><root>`fly</root><rootpos>N</root
+pos></le>
+<le><w>flies</w><lx>`fly+s</lx><pos>V</pos><root>`fly</root><rootpos>V</root
+pos></le>
+</lexicon>
+
+The KTagger software is directly available from these URLs:
+
+MS-DOS and Microsoft Windows:
+    ftp://ftp.sil.org/software/dos/pc-kimmo/ktag10b5.zip
+
+Macintosh:
+    ftp://ftp.sil.org/software/mac/pc-kimmo/ktagger10b5.sea_hqx
+
+Unix (sources):
+    ftp://ftp.sil.org/software/unix/
+
+The software can also be retrieved via e-mail. Send a message to
+MAILSERV@SIL.ORG consisting of these two lines only:
+
+    HELP
+    INDEX
+
+For more information on PC-KIMMO, Englex, and related software (including
+on-line documentation), connect to our Web server or Gopher server at
+these URLs:
+
+    http://www.sil.org/pckimmo/pc-kimmo.html
+    gopher://gopher.sil.org/11/gopher_root/pc-kimmo/
+
+
+
+Englex -- a morphological description of English
+------------------------------------------------
+
+Englex was first released for PC-KIMMO version 1.  It has now been revised and
+updated to work with PC-KIMMO version 2 (as well as PC-PATR--see below).  The
+lexicon files have been converted to the new format, and a word grammar has
+been added.
+
+For more information (including on-line documentation), connect to our Web
+server or Gopher server at these URLs:
+
+    gopher://gopher.sil.org/11/gopher_root/pc-kimmo/v2/englex/
+    http://www.sil.org/pckimmo/v2/doc/englex.html
+
+The software is directly available from these URLs:
+
+MS-DOS and Microsoft Windows:
+    ftp://ftp.sil.org/data/pc-kimmo/dos/
+
+Macintosh:
+    ftp://ftp.sil.org/data/pc-kimmo/mac/
+
+Unix:
+    ftp://ftp.sil.org/data/pc-kimmo/unix/
+
+The software can also be retrieved via e-mail.  Send a message to
+MAILSERV@SIL.ORG consisting of these two lines only:
+
+    HELP
+    INDEX
+
+
+PC-PATR -- a syntactic parser
+-----------------------------
+
+PC-PATR is a syntactic parser that uses the same unification parser as
+PC-KIMMO's word grammar component.  Thus the file format of a PC-PATR sentence
+grammar is identical to a PC-KIMMO word grammar.  PC-PATR's user interface is
+also very similar to PC-KIMMO.  PC-PATR actually has PC-KIMMO's morphological
+parsing engine built into it.  This means that you can use a morphological
+description such as Englex to provide lexical entries "on the fly" as you
+parse a sentence.  The new entries provided by the morphological parser can
+then be saved to a word lexicon file.  Here is a sample parse of the sentence
+"the brave knights stormed cornwall":
+
+                    S 
+          __________|__________
+         NP                  VP 
+   _______|________       ____|_____
+  Det   AdjP      N    VerbalP    NP 
+   |      |    knights    |        |
+  DT     AJ               V        N 
+  the   brave          stormed cornwall 
+
+S:
+[ cat:   S
+  pred:    [ cat:   VP
+             head:    [ agr:   $1[ 3sg:   - ]
+                        finite:+
+                        pos:   V
+                        tense: PAST
+                        vform: ED ] ]
+  subj:    [ cat:   NP
+             head:    [ agr:   $1
+                        case:  NOM
+                        number:PL
+                        pos:   N
+                        proper:-
+                        verbal:- ] ] ]
+
+
+Please note that only a _TOY_ grammar of English has been included with
+PC-PATR!  It is intended only to demonstrate how to write a grammar and also
+how to interface PC-PATR with a morphological description (namely Englex).
+
+PC-PATR is presently designated as an alpha release.  This is not because it
+is buggy or unstable, but because it still lacks features that we intend to
+add.
+
+For more information (including on-line documentation), connect to our Web
+server or Gopher server at these URLs:
+
+    http://www.sil.org/pcpatr/pc-patr.html
+    gopher://gopher.sil.org/11/gopher_root/pc-patr/
+
+The software is directly available from these URLs:
+
+MS-DOS and Microsoft Windows:
+    ftp://ftp.sil.org/software/dos/pcp097a9.zip
+
+Macintosh:
+    ftp://ftp.sil.org/software/mac/pc-patr097a9.sea_hqx
+
+Unix (sources):
+    ftp://ftp.sil.org/software/unix/
+
+The software can also be retrieved via e-mail.  Send a message to
+MAILSERV@SIL.ORG consisting of these two lines only:
+
+    HELP
+    INDEX
+
+
+PC-PARSE -- a mailing list for SIL parsing software
+---------------------------------------------------
+
+We have a mailing list to facilitate user support for SIL's parsing software,
+presently PC-PATR, PC-KIMMO, and AMPLE (another morphological parser which
+eventually will also be embedded in PC-PATR).  The list is called PC-PARSE.
+Users of the software are encouraged to use the list to ask questions, offer
+tips and solutions to problems, and exchange data and descriptions.  To
+subscribe to the list, create a message consisting of this line only:
+
+  SUBSCRIBE PC-PARSE
+
+and send it to this Internet e-mail address:
+
+  MAILSERV@SIL.ORG
+
+
+
+--Evan (the linguist) & Steve (the programmer)
+
+Evan Antworth                    |  e-mail: evan.antworth@sil.org
+Academic Computing Department    |  phone:  214-709-3346, -2418
+Summer Institute of Linguistics  |  fax:    214-709-3363
+7500 W. Camp Wisdom Road
+Dallas, TX 75236
+
+Steve McConnel                   |  e-mail: steve@acadcomp.sil.org
+Academic Computing Department    |  phone:  214-709-3361, -2418
+Summer Institute of Linguistics  |  fax:    214-709-3363
+7500 W. Camp Wisdom Road
+Dallas, TX 75236
+
+
+World Wide Web: http://www.sil.org/
+Gopher:         gopher.sil.org
+FTP:            ftp.sil.org  [198.213.4.1]
+Mailserver:     mailserv@sil.org (send "help" message)
