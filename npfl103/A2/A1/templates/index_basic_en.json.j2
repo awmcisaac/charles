@@ -1,0 +1,23 @@
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0,
+		"similarity": {
+			"default": {
+				"type": "BM25",
+				"b": 0.5,
+				"k1": 1.8
+			}
+		}
+    },
+    "mappings": {
+        "properties": {
+            {% for key in tags %}
+            "{{ key }}": {
+                "type": "text",
+                "analyzer": "{{ language }}"
+            },
+            {% endfor %}
+        }
+    }
+}

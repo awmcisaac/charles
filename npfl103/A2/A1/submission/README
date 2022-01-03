@@ -1,0 +1,32 @@
+Make sure all requirements are installed:
+
+```bash
+  pip install -r requirements.txt
+  python -c "import spacy_udpipe; spacy_udpipe.download('cs')"
+  python -m spacy download en_core_web_sm
+```
+
+To run experiments run the following commands, replacing train with test
+where appropriate to obtain results for the test topics. The program must be
+run from the parent directory of the documents.
+
+```python
+  python run.py -q topics-train_en.xml -d documents_en.lst -r run-0_en
+    -o run-0_train_en.res
+
+  python run.py -q topics-train_cs.xml -d documents_cs.lst -r run-0_cs
+    -o run-0_train_cs.res
+
+  python run.py -q topics-train_en.xml -d documents_en.lst -r run-1_en
+    -o run-1_train_en.res --stopwords --lowercase --stemming
+    --df-weighting prob_idf --pivoted 0.85
+
+  python run.py -q topics-train_cs.xml -d documents_cs.lst -r run-1_cs
+    -o run-1_train_cs.res --stopwords --lowercase --lemmas
+    --df-weighting prob_idf --pivoted 0.9
+```
+The program will create an inverted index or load a saved one based on the
+value of the -r parameter. That is, if the same run parameter has been called
+before, there will be a saved index which does not need to be recreated, and
+the queries can be run directly on that. Otherwise, it will construct a new one
+before running the queries.

@@ -1,0 +1,7 @@
+bs4
+nltk
+numpy
+pandas
+spacy
+spacy_udpipe
+tqdm
