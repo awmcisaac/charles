@@ -1,0 +1,46 @@
+### german.foma ###
+
+# Vowels
+define V [a|e|i|o|u|ä|ö|ü];
+# Consonants
+define C [b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z|B|C|D|F|G|H|J|K|L|M|N|P|Q|R|S|T|V|W|X|Y|Z];
+
+read lexc german.lexc
+define Lexicon;
+
+# Insert an "e" after "s" sounds in plural nouns
+define EInsertion [..] -> e || [ s | ß | z | x ] _ "^" s ;
+
+# Insert an in superlative adjective after some consonants
+define AdjEInsertion [..] -> e || [ d | t | s | ß | x | z ] _ ["@R.SUP@"] "^" [ s t e n ] ;
+
+#define AttSupDeletion [ "am~" ] -> 0 || _ ?* ["@R.SUP"] ;
+
+# N-Declension
+# Masculine nouns ending with "-e" add an "n"
+#define NDeclMascE e -> e n || _ "^" ;
+#define NDeclMascES s -> n || e "^" _ ;
+define NDeclEDeletion e -> 0 || _ ("@C.UML@"|"@D.UML@") "^" e n ;
+
+# Delete genitive plural "n" when "en" already ends plural
+define NDeletion n -> 0 || e n "^" _ ;
+
+# Umlauts when there is an umlaut flag
+define UmlautInsertion a -> ä, o -> ö, u -> ü || \V _ (V) C+ ["@D.UML@"] "^" ( e ( r ) ) ("^" n) ;
+
+# Add umlaut to comparative and superlative adjective degrees for monosyllabic adjectives
+# defined here as the first vowel of a single vowel cluster surrounded by consonants
+define AdjUmlautInsertion a -> ä, o -> ö, u -> ü || (C) _ (V) \V* ["@R.SUP@"|"@D.SUP@"] "^" ;
+
+define Cleanup "^" -> 0;
+
+define Grammar	Lexicon				.o.
+				UmlautInsertion		.o.
+				AdjUmlautInsertion	.o.
+				EInsertion			.o.
+				AdjEInsertion		.o.
+				NDeclEDeletion		.o.
+				NDeletion			.o.
+				Cleanup;
+
+regex Grammar;

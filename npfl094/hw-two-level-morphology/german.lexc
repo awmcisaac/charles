@@ -1,0 +1,353 @@
+!!! german.lexc !!!
+
+Multichar_Symbols +N +V +A +PastPart +Past +PresPart +3P +Sg +Pl +Nom +Acc +Dat +Gen +Comp Sup+ +Pred +Att Uml+ @P.UML.ON@ @R.UML@ @D.UML@ @C.UML@ @P.SUP.ON@ @R.SUP@ @D.SUP@ @C.SUP@ @N.SUP@
+
+LEXICON Root
+
+Adjective ;
+AdjectiveSup ;
+NounStem ;
+
+LEXICON AdjectiveSup
+
+@P.SUP.ON@Sup+:@P.SUP.ON@am_ Adjective;
+
+LEXICON Adjective
+
+klein AdjDeg;
+schwarz AdjDeg;
+alt AdjDeg;
+unrealistisch AdjDeg;
+hoch AdjDeg;
+
+LEXICON AdjDeg
+
+@R.SUP@+Pred:@R.SUP@^sten	#;
+@R.SUP@+Att:@R.SUP@^st		AdjArt;
+@D.SUP@+Comp:@D.SUP@^er		AdjArt;
+
+LEXICON AdjArt
+
++Def:0	AdjSoft;
++Indef:0	AdjIndef;
+AdjHard;
+
+LEXICON AdjSoft
+
++A+Nom+M:^e		#;
++A+Nom+F:^e		#;
++A+Nom+N:^e		#;
++A+Nom+Pl:^en	#;
+
++A+Acc+M:^en	#;
++A+Acc+F:^e		#;
++A+Acc+N:^e		#;
++A+Acc+Pl:^en	#;
+
++A+Dat+M:^en	#;
++A+Dat+F:^en	#;
++A+Dat+N:^en	#;
++A+Dat+Pl:^en	#;
+
++A+Gen+M:^en	#;
++A+Gen+F:^en	#;
++A+Gen+N:^en	#;
++A+Gen+Pl:^en	#;
+
+LEXICON AdjIndef
+
++A+Nom+M:^er	#;
++A+Nom+F:^e		#;
++A+Nom+N:^es	#;
++A+Nom+Pl:^en	#;
+
++A+Acc+M:^en	#;
++A+Acc+F:^e		#;
++A+Acc+N:^es	#;
++A+Acc+Pl:^en	#;
+
++A+Dat+M:^en	#;
++A+Dat+F:^en	#;
++A+Dat+N:^en	#;
++A+Dat+Pl:^en	#;
+
++A+Gen+M:^en	#;
++A+Gen+F:^en	#;
++A+Gen+N:^en	#;
++A+Gen+Pl:^en	#;
+
+LEXICON AdjHard
+
++A+Nom+M:^er	#;
++A+Nom+F:^e		#;
++A+Nom+N:^es	#;
++A+Nom+Pl:^e	#;
+
++A+Acc+M:^en	#;
++A+Acc+F:^e		#;
++A+Acc+N:^es	#;
++A+Acc+Pl:^e	#;
+
++A+Dat+M:^em	#;
++A+Dat+F:^er	#;
++A+Dat+N:^em	#;
++A+Dat+Pl:^en	#;
+
++A+Gen+M:^en	#;
++A+Gen+F:^er	#;
++A+Gen+N:^en	#;
++A+Gen+Pl:^er	#;
+
+LEXICON NounStem
+
+Noun ;
+
+LEXICON Noun
+
+Strauß NM;
+Reflex NM;
+Name NM;
+
+Gewürz NN;
+Gas NN;
+
+Senat NMW;
+Assistent NMW;
+Vize NMW;
+Kunde NMW;
+Junge NMW;
+Elefant NMW;
+
+Lappen NMno;
+
+Hund@C.UML@ NMe;
+Flaneur@C.UML@ NMe;
+Ball NMe;
+
+Mann NMer;
+
+Katze NFen;
+Einsammlung NFen;
+Animation NFen;
+
+Haus NNer;
+Tuch NNer;
+
+Auto NNs;
+Taxi NNs;
+
+LEXICON NMW
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^en	#;
++N+Sg+Dat:^en	#;
++N+Sg+Gen:^en	#;
+
++N+Pl+Nom:^en	#;
++N+Pl+Acc:^en	#;
++N+Pl+Dat:^en	#;
++N+Pl+Gen:^en	#;
+
+LEXICON NMno
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^	#;
+@D.UML@+N+Pl+Acc:@D.UML@^	#;
+@D.UML@+N+Pl+Dat:@D.UML@^	#;
+@D.UML@+N+Pl+Gen:@D.UML@^	#;
+
+LEXICON NMe
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^e	#;
+@D.UML@+N+Pl+Acc:@D.UML@^e	#;
+@D.UML@+N+Pl+Dat:@D.UML@^e	#;
+@D.UML@+N+Pl+Gen:@D.UML@^e	#;
+
+LEXICON NMn
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
++N+Pl+Nom:^n	#;
++N+Pl+Acc:^n	#;
++N+Pl+Dat:^n	#;
++N+Pl+Gen:^n	#;
+
+LEXICON NMer
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^er		#;
+@D.UML@+N+Pl+Acc:@D.UML@^er		#;
+@D.UML@+N+Pl+Dat:@D.UML@^er^n	#;
+@D.UML@+N+Pl+Gen:@D.UML@^er		#;
+
+LEXICON NMs
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
++N+Pl+Nom:^s	#;
++N+Pl+Acc:^s	#;
++N+Pl+Dat:^s	#;
++N+Pl+Gen:^s	#;
+
+LEXICON NF
+
++N+Sg+Nom:^		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^		#;
+
++N+Pl+Nom:^e	#;
++N+Pl+Acc:^e	#;
++N+Pl+Dat:^en	#;
++N+Pl+Gen:^e	#;
+
+LEXICON NFno
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^		#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^	#;
+@D.UML@+N+Pl+Acc:@D.UML@^	#;
+@D.UML@+N+Pl+Dat:@D.UML@^	#;
+@D.UML@+N+Pl+Gen:@D.UML@^	#;
+
+LEXICON NFe
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^		#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^e	#;
+@D.UML@+N+Pl+Acc:@D.UML@^e	#;
+@D.UML@+N+Pl+Dat:@D.UML@^e	#;
+@D.UML@+N+Pl+Gen:@D.UML@^e	#;
+
+LEXICON NFen
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^		#;
+
++N+Pl+Nom:^en	#;
++N+Pl+Acc:^en	#;
++N+Pl+Dat:^en	#;
++N+Pl+Gen:^en	#;
+
+LEXICON NFs
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^		#;
+
++N+Pl+Nom:^s	#;
++N+Pl+Acc:^s	#;
++N+Pl+Dat:^s	#;
++N+Pl+Gen:^s	#;
+
+LEXICON NN
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:0		#;
++N+Sg+Dat:0		#;
++N+Sg+Gen:^s	#;
+
++N+Pl+Nom:^er	#;
++N+Pl+Acc:^er	#;
++N+Pl+Dat:^ern	#;
++N+Pl+Gen:^er	#;
+
+LEXICON NNno
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^	#;
+@D.UML@+N+Pl+Acc:@D.UML@^	#;
+@D.UML@+N+Pl+Dat:@D.UML@^	#;
+@D.UML@+N+Pl+Gen:@D.UML@^	#;
+
+LEXICON NNe
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^e	#;
+@D.UML@+N+Pl+Acc:@D.UML@^e	#;
+@D.UML@+N+Pl+Dat:@D.UML@^e	#;
+@D.UML@+N+Pl+Gen:@D.UML@^e	#;
+
+LEXICON NNn
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
++N+Pl+Nom:^n	#;
++N+Pl+Acc:^n	#;
++N+Pl+Dat:^n	#;
++N+Pl+Gen:^n	#;
+
+LEXICON NNer
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
+@D.UML@+N+Pl+Nom:@D.UML@^er		#;
+@D.UML@+N+Pl+Acc:@D.UML@^er		#;
+@D.UML@+N+Pl+Dat:@D.UML@^er^n	#;
+@D.UML@+N+Pl+Gen:@D.UML@^er		#;
+
+LEXICON NNs
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^s	#;
+
++N+Pl+Nom:^s	#;
++N+Pl+Acc:^s	#;
++N+Pl+Dat:^s	#;
++N+Pl+Gen:^s	#;
+
+LEXICON NNse
+
++N+Sg+Nom:0		#;
++N+Sg+Acc:^		#;
++N+Sg+Dat:^		#;
++N+Sg+Gen:^ses	#;
+
++N+Pl+Nom:^se	#;
++N+Pl+Acc:^se	#;
++N+Pl+Dat:^se	#;
++N+Pl+Gen:^se	#;
