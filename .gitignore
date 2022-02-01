@@ -25,9 +25,10 @@
 **/*.snm
 
 # npfl103
-npfl103/A1/doc*
-npfl103/A1/eval
-npfl103/A1/*.txt
+npfl103/**/doc*
+npfl103/**/eval
+npfl103/**/*.txt
+npfl103/**/*.res
 
 # npfl094
 npfl094/lab-morfessor
