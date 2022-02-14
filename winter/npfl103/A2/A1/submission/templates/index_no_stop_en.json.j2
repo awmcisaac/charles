@@ -1,0 +1,39 @@
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0,
+		"analysis": {
+			"filter": {
+				"english_stemmer": {
+					"type": "stemmer",
+					"language": "english"
+				},
+				"english_possessive_stemmer": {
+					"type": "stemmer",
+					"language":   "possessive_english"
+				}
+			},
+			"analyzer": {
+				"rebuilt_english": {
+					"tokenizer":  "standard",
+					"filter": [
+						"english_possessive_stemmer",
+            			"lowercase",
+            			"english_keywords",
+            			"english_stemmer"
+					]
+		        }
+			}
+		}
+    },
+    "mappings": {
+        "properties": {
+            {% for key in tags %}
+            "{{ key }}": {
+                "type": "text",
+                "analyzer": "{{ language }}"
+            },
+            {% endfor %}
+        }
+    }
+}

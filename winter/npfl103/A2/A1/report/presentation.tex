@@ -1,0 +1,142 @@
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage{array,multirow,graphicx}
+\usepackage{booktabs}
+
+\title[Assignment 1]{Information Retrieval Assignment 2\\Elasticsearch}
+\author{Andrew McIsaac}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Preprocessing}
+
+\section{Baseline Results}
+
+\begin{frame}{Baseline Results}
+
+\begin{itemize}
+	\item Czech: 0.0561 MAP, 0.060 $P_{10}$
+	\item English: 0.0802 MAP, 0.128 $P_{10}$
+\end{itemize}
+
+\end{frame}
+
+\section{Experiments}
+
+\begin{frame}{Similarity Scores}
+\begin{itemize}
+  \item BM25, LM Jelinek Mercer (interpolation), LM Dirichlet, Divergence from Randomness,
+	  Divergence from Independence (removed stopwords), Information-Based Model
+\end{itemize}
+
+\begin{table}[htpb]
+    \centering
+    \caption{Similarities MAP values for English}
+    \label{tab:similarities}
+    \begin{tabular}{c|c}
+    Similarity & MAP \\
+    \hline
+    BM25 & 0.348 \\
+    LM Jelinek Mercer & 0.3174 \\
+    LM Dirichlet & 0.3232 \\
+    DFR & 0.2957 \\
+    DFI & 0.2742 \\
+    IB & 0.3439
+    \end{tabular}
+\end{table}
+
+\end{frame}
+
+\subsection{Query Boosting}
+
+\begin{frame}{Query Boosting}
+
+	\begin{itemize}
+		\item Boosted scores for exact query phrase
+		\item No benefit for English
+		\item Small improvement for Czech
+	\end{itemize}
+
+
+	\begin{table}[htpb]
+	    \centering
+	    \caption{Boosting of Exact Query Phrase Matches}
+	    \label{tab:boosting}
+	    \begin{tabular}{cc|cc}
+	    & Boost & MAP & P$_{10}$ &
+	    \hline
+	    \parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{English}}} 
+	    & 3 & 0.3332 & 0.392 &
+	    & 2 & 0.3339 & 0.388 &
+	    & 1 & 0.3367 & 0.396 &
+	    & 0.5 & 0.3444 & 0.408 &
+	    \hline
+	    \parbox[t]{2mm}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Czech}}} 
+	    & 3 & 0.3405 & 0.340 &
+	    & 2 & 0.3409 & 0.340 &
+	    & 1 & 0.3420 & 0.340 &
+	    & 0.5 & 0.3443 & 0.344 &
+	    \end{tabular}
+	\end{table}
+
+\end{frame}
+
+\subsection{Pseudo-Relevance / Query Expansion}
+
+\begin{frame}{Pseudo-Relevance / Query Expansion}
+
+\begin{itemize}
+	\item Significant terms API
+	\item Extracts terms from retrieved documents that are in a significantly
+		higher portion of the returned documents than the total number of
+		indexed documents
+	\item "renewable energy sources" $\to $ "geotherm", "biomass", "solar"
+	\item "euro inflation" $\to $ "yen"
+\end{itemize}
+
+\end{frame}
+
+\section{Final Results}
+
+\begin{frame}{Final Results}
+
+\begin{itemize}
+	\item Czech: 0.3595 MAP, 0.0.348 $P_{10}$
+		\begin{itemize}
+			\item Standard Analyzer, boosted query phrases 0.5, BM25 b=0.3, k1=0.6,
+				pseudo-relevance feedback on top 10 queries
+		\end{itemize}
+	\item English: 0.3502 MAP, 0.416 $P_{10}$
+		\begin{itemize}
+			\item Standard Analyzer, BM25 b=0.5, k1=1.8,
+				pseudo-relevance feedback on top 10 queries
+		\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\end{document}

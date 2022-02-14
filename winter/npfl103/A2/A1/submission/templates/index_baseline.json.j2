@@ -1,0 +1,25 @@
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0,
+		"similarity": {
+			"scripted_cosine_similarity": {
+				"type": "scripted",
+				"script": {
+					"source": "double tf = doc.freq; double norm = 1/Math.sqrt(doc.length); return query.boost * tf * norm;"
+				}
+			}
+		}
+    },
+    "mappings": {
+        "properties": {
+            {% for key in tags %}
+            "{{ key }}": {
+                "type": "text",
+                "analyzer": "whitespace",
+                "similarity": "scripted_cosine_similarity"
+			},
+            {% endfor %}
+        },
+    }
+}

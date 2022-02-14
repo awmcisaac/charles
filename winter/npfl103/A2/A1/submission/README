@@ -1,0 +1,27 @@
+
+Make sure all requirements are installed, including an active Elasticsearch
+cluster. Docker is recommended, but alternative methods should also work, as
+long as it is exposed at \texttt{localhost:9200}:
+
+```bash
+pip install -r requirements.txt
+docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+docker run --name es01-ir --net elastic
+    -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300
+    -e "discovery.type=single-node"
+    docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+```
+
+To run experiments run the following commands, replacing the LANGUAGE
+and QUERIES environment variables where appropriate. The program must
+be run from the parent directory of the documents.
+
+```bash
+export LANGUAGE="en"
+export LANGUAGE="cs"
+export QUERIES="train"
+export QUERIES="test"
+python run-0.py
+python run-1.py
+```

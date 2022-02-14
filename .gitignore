@@ -18,6 +18,7 @@
 **/*.fls
 **/*.log
 **/*.out
+**/*.pdf
 **/*.run.xml
 **/*.synctex.gz
 **/*.toc
@@ -25,10 +26,10 @@
 **/*.snm
 
 # npfl103
-npfl103/**/doc*
-npfl103/**/eval
-npfl103/**/*.txt
-npfl103/**/*.res
+**/npfl103/**/doc*
+**/npfl103/**/eval
+**/npfl103/**/*.txt
+**/*.res
 
 # npfl094
-npfl094/lab-morfessor
+**/npfl094/lab-morfessor
