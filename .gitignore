@@ -7,6 +7,8 @@
 */.ipynb_checkpoints/*
 **/*.zip
 **/*.tar.gz
+**/*.tgz
+**/*.mp3
 
 # latex files
 **/*.aux
