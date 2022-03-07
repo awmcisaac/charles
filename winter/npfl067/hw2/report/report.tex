@@ -1,0 +1,142 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{NPFL067 Assignment 2 - Words and the Company They Keep}
+\date{\today}
+\author{Andrew McIsaac}
+
+\begin{document}
+\maketitle
+
+    \section{Best Friends}
+
+    \subsection{Consecutive Word Pairs}
+
+    \begin{table}[h!]
+        \centering
+        \caption{PMI for consecutive word pairs in the English data}
+        \label{tab:cons_en}
+        \begin{tabular}{llr}
+        \toprule
+             WORD1 &          WORD2 &      PMI \\
+        \midrule
+                La &          Plata &  14.1694 \\
+               Asa &           Gray &  14.0319 \\
+             Fritz &         Muller &  13.3620 \\
+             worth &          while &  13.3329 \\
+             faced &        tumbler &  13.2625 \\
+             lowly &      organised &  13.2169 \\
+             Malay &    Archipelago &  13.1105 \\
+          shoulder &         stripe &  13.0539 \\
+             Great &        Britain &  12.9146 \\
+            United &         States &  12.8474 \\
+           English &        carrier &  12.5255 \\
+         specially &        endowed &  12.4018 \\
+          branched &            off &  12.3774 \\
+               Sir &              J &  12.3774 \\
+            mental &      qualities &  12.3620 \\
+                de &       Candolle &  12.3620 \\
+         Galapagos &    Archipelago &  12.3449 \\
+               red &         clover &  12.3239 \\
+              self &  fertilisation &  12.3169 \\
+        systematic &       affinity &  12.2518 \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \begin{table}[h!]
+        \centering
+        \caption{PMI for consecutive word pairs in the Czech data}
+        \label{tab:cons_cz}
+        \begin{tabular}{llr}
+        \toprule
+                  WORD1 &        WORD2 &      PMI \\
+        \midrule
+              Hamburger &           SV &  14.2890 \\
+                    Los &      Angeles &  14.0624 \\
+                  Johna &     Newcomba &  13.7629 \\
+                     Č. &   Budějovice &  13.6336 \\
+                  série &          ATP &  13.4690 \\
+              turnajové &        série &  13.4344 \\
+                  Tomáš &        Ježek &  13.4290 \\
+                 Lidové &       noviny &  13.3299 \\
+               Lidových &        novin &  13.2710 \\
+              veřejného &       mínění &  13.0624 \\
+                teplota &        minus &  12.9815 \\
+                jaderné &       zbraně &  12.9555 \\
+                    Ján &  Čarnogurský &  12.9555 \\
+                  Milan &       Máčala &  12.8978 \\
+               lidských &         práv &  12.8629 \\
+              společném &        státě &  12.7084 \\
+              akciových &  společností &  12.6925 \\
+                  Pohár &         UEFA &  12.6254 \\
+         privatizačních &     projektů &  12.6157 \\
+                 George &        Bushe &  12.6030 \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+
+	There are some negative values. These occur when the probability of the
+	second word ($b$) occurring after the first word ($a$) is lower than would
+	be expected given their independent probabilities. I.e. $p(a,b) < p(a)p(b)$.
+	They are most often found in pairs of very common words, such as ``the be''. 
+
+    \subsection{Distant Words}
+
+    \begin{table}[h!]
+        \centering
+        \caption{PMI for distant word pairs in the English data}
+        \label{tab:dist_en}
+        \begin{tabular}{llr}
+        \toprule
+                 WORD1 &          WORD2 &     PMI \\
+        \midrule
+               floated &          dried &  8.7207 \\
+                 dried &        floated &  8.6777 \\
+                 dried &          dried &  8.2886 \\
+              shoulder &         stripe &  8.2023 \\
+                stripe &       shoulder &  8.2023 \\
+            germinated &          dried &  8.1511 \\
+                 dried &     germinated &  8.1511 \\
+               floated &        floated &  8.1428 \\
+                clover &         clover &  8.0118 \\
+                 heath &          heath &  7.9722 \\
+               Pacific &        eastern &  7.9653 \\
+               eastern &        Pacific &  7.9653 \\
+            germinated &        floated &  7.9552 \\
+               floated &     germinated &  7.9552 \\
+            avicularia &      vibracula &  7.8397 \\
+                 Plata &             La &  7.8032 \\
+                    La &          Plata &  7.8032 \\
+         metamorphosed &  metamorphosed &  7.8032 \\
+                  days &          dried &  7.8032 \\
+                  cave &           cave &  7.8032 \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \section{Word Classes}
+
+
+    \section{Tag Classes}
+
+\end{document}
